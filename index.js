@@ -77,11 +77,9 @@ app.post("/users/register", async (req, res) => {
       userId: result.insertId,
     });
   } catch (error) {
-    // Jika ada error, error akan dicetak di sini (termasuk error SQL)
-    console.error("Error saat registrasi:", error.message || error);
-    res
-      .status(500)
-      .json({ message: "Terjadi kesalahan server saat registrasi." });
+    console.error("Error saat registrasi:", error); // Biar muncul di logs
+    // KITA KIRIM ERROR.MESSAGE ASLINYA KE FRONTEND
+    res.status(500).json({ message: error.message });
   } finally {
     // Pastikan koneksi dilepaskan
     if (connection) connection.release();
