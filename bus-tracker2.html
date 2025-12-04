@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Tracker - LAYO</title>
+    <link rel="stylesheet" href="bus-tracker.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Google Maps Section -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.531269868012!2d104.6460913740608!3d-3.216929840782312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3bbdf41ccc272f%3A0x44c587e8be864639!2sUniversitas%20Sriwijaya%20-%20Kampus%20Indralaya!5e0!3m2!1sid!2sid!4v1764664791961!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <!-- Bus Info Card -->
+        <div class="bus-info-card">
+            <div class="bus-header">
+                <div class="bus-icon-wrapper">
+                   <img src="assets/icon-bus.png" alt="bus-icon" class="bus-icon">
+                </div>
+                <div class="bus-details">
+                    <h3 class="bus-title">Bus - 02</h3>
+                    <p class="bus-route">Bus akan perjalanan ke Fakultas Ekonomi </p>
+                </div>
+            </div>
+
+            <div class="bus-footer">
+                <div class="last-update">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="clock-icon">
+                        <circle cx="12" cy="12" r="10" stroke="#999" stroke-width="2"/>
+                        <path d="M12 6V12L16 14" stroke="#999" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span class="update-text">Last Update, 20:00</span>
+                </div>
+                <a href="bus-tracker3.html" class="refresh-btn">
+                    <img src="assets/panah kuning.png" alt="panah kuning">
+                    </a>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                 <img src="assets/nav-home.png" alt="Home" class="nav-icon"> 
+            </a>
+            <a href="notification.html" class="nav-item">
+                <img src="assets/nav-home-outline.png" alt="Notif" class="nav-icon">
+            </a>
+            <a href="setting.html" class="nav-item">
+                <img src="assets/nav-settings.png" alt="Settings" class="nav-icon"> 
+            </a>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

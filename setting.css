@@ -1,0 +1,305 @@
+/* setting.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    /* Background gradient supaya di layar besar tidak sepi (sama seperti FAQ) */
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    color: #333;
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .page-title {
+    color: #a78bfa;
+}
+
+body.dark-mode .setting-item {
+    background: #2a2a2a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .setting-item:hover {
+    background: #333333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .item-text {
+    color: #e0e0e0;
+}
+
+body.dark-mode .icon-wrapper {
+    background: #3a2a5a;
+    color: #a78bfa;
+}
+
+body.dark-mode .logout-link:hover {
+    background-color: #3a2020;
+}
+
+body.dark-mode .bottom-nav {
+    background: #2a2a2a;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .nav-item.active {
+    background: #3a2a5a;
+}
+
+body.dark-mode .back-btn {
+    background: #8b5cf6;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 100px; /* Space untuk bottom nav */
+    margin: 0 auto;
+}
+
+/* --- Header --- */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 24px 20px;
+    gap: 16px;
+    background: transparent; /* Transparan agar menyatu */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* Efek kaca saat discroll (opsional, bagus untuk web app) */
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+body.dark-mode .header.scrolled {
+    background: rgba(42, 42, 42, 0.9);
+}
+
+.back-btn {
+    background: #6B2E9E;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 4px 12px rgba(107, 46, 158, 0.2);
+    transition: transform 0.2s;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+}
+
+.page-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #6B2E9E;
+    transition: color 0.3s ease;
+}
+
+/* --- Setting List Content --- */
+.setting-list {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Item Style - Dibuat seperti kartu */
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 16px;
+    background: white;
+    border-radius: 16px; /* Sudut membulat */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* Bayangan halus */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.setting-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Khusus link logout */
+.logout-link:hover {
+    background-color: #fff5f5; /* Sedikit merah muda saat hover */
+}
+
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon-wrapper {
+    color: #6B2E9E;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background: #f3e8ff; /* Background ungu muda di belakang ikon */
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.item-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4b5563;
+    transition: color 0.3s ease;
+}
+
+/* --- Toggle Switch --- */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 28px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #cbd5e1;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: #6B2E9E; }
+input:checked + .slider:before { transform: translateX(24px); }
+
+/* --- Bottom Navigation --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.nav-item {
+    color: #9ca3af;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-item.active {
+    color: #6B2E9E;
+    background: #f3e8ff; /* Highlight aktif */
+}
+
+.nav-item:hover {
+    color: #6B2E9E;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Desktop / Tablet)
+   ========================================= */
+
+@media (min-width: 768px) {
+    /* 1. Container dibatasi lebarnya dan ditaruh tengah */
+    .container {
+        max-width: 600px; /* Lebar ideal untuk form settings di desktop */
+        padding-top: 40px;
+    }
+
+    /* 2. Header dirapikan */
+    .header {
+        padding: 0 0 32px 0;
+        background: transparent;
+        position: static; /* Tidak sticky di desktop */
+    }
+
+    .page-title {
+        font-size: 28px; /* Judul lebih besar */
+    }
+
+    .back-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    /* 3. Setting List lebih lega */
+    .setting-list {
+        padding: 0;
+        gap: 20px;
+    }
+
+    .setting-item {
+        padding: 24px; /* Padding dalam kartu lebih besar */
+    }
+
+    .icon-wrapper {
+        padding: 10px;
+    }
+    
+    .item-text {
+        font-size: 18px;
+    }
+
+    /* 4. Bottom Nav jadi "Floating Dock" */
+    .bottom-nav {
+        max-width: 400px; /* Lebar nav terbatas */
+        left: 50%;
+        transform: translateX(-50%); /* Posisi tengah absolute */
+        bottom: 30px; /* Mengambang dari bawah */
+        border-radius: 24px; /* Sudut sangat bulat */
+        padding: 12px 24px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Shadow lebih dramatis */
+    }
+}

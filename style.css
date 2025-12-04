@@ -1,0 +1,585 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f5f5f5;
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  background-color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.login-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+.login-text {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.user-icon {
+  width: 70px;
+  height: 75px;
+}
+
+/* Container */
+.container {
+  padding: 10px 15px 120px 15px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Banner */
+.hero-banner {
+  background: linear-gradient(135deg, #6b2e9e 0%, #3b82f6 100%);
+  border-radius: 40px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 150px 10px 150px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.hero-content {
+  color: white;
+  z-index: 2;
+}
+
+.hero-subtitle {
+  font-size: 11px;
+  margin-bottom: 3px;
+  font-weight: 300;
+}
+
+.hero-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.hero-bus {
+  width: 200px;
+  height: auto;
+  box-shadow: #333;
+  z-index: 1;
+  object-fit: contain;
+  margin: 70px 0 0 0;
+}
+
+/* Membership Banner */
+.membership-banner {
+  background: linear-gradient(90deg, #ff9800 0%, #e91e63 100%);
+  border-radius: 40px;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  margin: 0px 200px 5px 200px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  height: 150px;
+}
+
+.membership-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.membership-text {
+  color: white;
+}
+
+.membership-title {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  margin: 0 0 2px 20px;
+}
+
+.membership-button {
+  background: linear-gradient(white);
+  border-radius: 40px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #3b82f6;
+  padding: 12px 18px;
+  margin: 0 0 0 1px;
+  border: 1.5px solid white;
+}
+
+.membership-card {
+  width: 55px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Quick Menu */
+.quick-menu {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.info-bus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 2px 0 2px;
+  padding: 2px 5px;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  background-color: white;
+}
+
+.icon-circle.purple {
+  background-color: #f3e5f5;
+}
+
+.icon-circle.red {
+  background-color: #db0e0e;
+}
+
+.icon-circle.green {
+  background-color: rgb(32, 132, 32);
+}
+
+.icon-circle.white {
+  background-color: white;
+}
+
+.menu-icon {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+.menu-label {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Carousel */
+.carousel-container {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 45%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background-color: #6b2e9e;
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* Bottom Menu */
+.bottom-menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.bottom-menu-item {
+  background-color: white;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease;
+  min-height: 100px;
+  justify-content: center;
+}
+
+.bottom-menu-item:hover {
+  transform: translateY(-2px);
+}
+
+.bottom-icon {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+.bottom-menu-item span {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Running Text */
+.running-text {
+  background: linear-gradient(90deg, #e91e63 0%, #9c27b0 100%);
+  padding: 8px 0;
+  overflow: hidden;
+  margin: 0 -15px 20px -15px;
+}
+
+.running-text-content {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-left 20s linear infinite;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 18px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #999;
+  transition: color 0.3s ease;
+}
+
+.nav-item.active {
+  color: #6b2e9e;
+}
+
+.nav-icon {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+.nav-item.active .nav-icon {
+  filter: brightness(0.9);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 22px;
+  }
+
+  /* Tambahkan perbaikan ini */
+  .hero-banner {
+    /* Ubah margin kiri-kanan dari 150px menjadi 15px saja agar muat di HP */
+    margin: 10px 4px;
+    height: 150px; /* Biar tinggi menyesuaikan isi jika teks panjang */
+    padding-bottom: 20px; /* Sedikit ruang di bawah */
+  }
+
+  .hero-bus {
+    width: 120px; /* Sesuaikan ukuran bus */
+    margin-top: 20px; /* Atur ulang posisi bus agar tidak nabrak teks */
+  }
+
+  .membership-banner {
+    /* Ubah margin kiri-kanan dari 200px menjadi 15px saja */
+    margin: 10px 15px;
+    height: 100px;
+  }
+
+  .membership-title {
+    margin-left: 0; /* Rapikan teks di tombol membership */
+  }
+}
+
+/* --- DARK MODE STYLES (HOME) --- */
+
+/* 1. Body & Background Utama */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* 2. Header */
+body.dark-mode header {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .login-btn {
+  color: #e0e0e0;
+}
+
+/* Invert ikon user di header agar terlihat putih */
+body.dark-mode .user-icon {
+  filter: invert(1);
+}
+
+/* 3. Hero Banner (Ungu) */
+/* Kita biarkan tetap ungu tapi sedikit lebih gelap agar tidak silau */
+body.dark-mode .hero-banner {
+  background: linear-gradient(135deg, #4a148c 0%, #1565c0 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* 4. Membership Banner (Orange-Pink) */
+body.dark-mode .membership-banner {
+  background: linear-gradient(90deg, #e65100 0%, #c2185b 100%);
+}
+
+body.dark-mode .membership-button {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* 5. Quick Menu Icons */
+body.dark-mode .icon-circle {
+  background-color: #2c2c2c; /* Warna kartu gelap */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .icon-circle.purple {
+  background-color: #311b92; /* Ungu gelap */
+}
+
+body.dark-mode .icon-circle.red {
+  background-color: #b71c1c; /* Merah gelap */
+}
+
+body.dark-mode .icon-circle.green {
+  background-color: #1b5e20; /* Hijau gelap */
+}
+
+body.dark-mode .icon-circle.white {
+  background-color: #2c2c2c;
+}
+
+body.dark-mode .menu-label {
+  color: #e0e0e0; /* Teks label jadi putih */
+}
+
+/* Invert icon hitam agar jadi putih */
+body.dark-mode .menu-icon {
+  filter: brightness(0) invert(1);
+}
+/* Kecuali icon bus di lingkaran putih (karena aslinya berwarna) */
+body.dark-mode .icon-circle.white .menu-icon {
+  filter: none;
+}
+
+/* 6. Bottom Menu (FAQ, Contact, Connect) */
+body.dark-mode .bottom-menu-item {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* Invert icon di menu bawah */
+body.dark-mode .bottom-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* 7. Bottom Navigation (Fixed di bawah) */
+body.dark-mode .bottom-nav {
+  background-color: #1e1e1e;
+  box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.05);
+}
+
+/* Invert icon navigasi */
+body.dark-mode .nav-item .nav-icon {
+  filter: brightness(0) invert(1);
+}
+
+/* --- FIX TAMPILAN USERNAME / LOGIN DI NAVBAR --- */
+#userInfo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+/* Jika user sudah login */
+.user-logged {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+
+
+/* Tombol login */
+.login-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.login-btn img.user-icon {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+/* Mode gelap tetap rapi */
+body.dark-mode .user-logged {
+  color: #eee;
+}
+
+body.dark-mode .login-btn {
+  background-color: #1e1e1e;
+  color: #eee;
+  border-color: #555;
+}
+
+body.dark-mode .user-icon {
+  filter: invert(1);
+}
+
+/* --- FIX TAMPILAN LOGIN AGAR SAMA SEPERTI FOTO PERTAMA --- */
+
+#userInfo a {
+    text-decoration: none;
+}
+
+.login-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    padding: 0;  /* tidak ada padding kotak */
+}
+
+.login-btn img.user-icon {
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: contain;
+}
+
+/* Mode gelap */
+body.dark-mode .login-btn {
+    color: #eee;
+}
+
+body.dark-mode .login-btn img.user-icon {
+    filter: invert(1);
+}

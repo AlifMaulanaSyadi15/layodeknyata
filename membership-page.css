@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #D4A574 0%, #B8935E 100%);
+    border: 4px solid (135deg, #D4A574 0%, #B8935E 100%);
+    border-radius: 25px;
+    padding: 20px 50px;
+    text-align: center;
+    margin: 20px 20px 0 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header h1 {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.header h2 {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* Membership Cards */
+.membership-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    padding-bottom: 200px;
+}
+
+.membership-text{
+    text-decoration: none;
+}
+
+.card {
+    border-radius: 20px;
+    padding: 25px 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-price {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+    margin: 1px 0 30px 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon.double {
+    position: relative;
+}
+
+.icon.crown {
+    border-radius: 50%;
+}
+
+.price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.price {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.duration {
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.95;
+}
+
+.badge {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px 0;
+}
+
+/* Card Colors */
+.silver {
+    background: linear-gradient(135deg, #39bd9a 0%, #4BB2A3 37%, #45BEC6 92%);
+}
+
+.gold {
+    background: linear-gradient(135deg, #F0B845 0%, #f29943 37%, #ec7a3f 92%);
+}
+
+.diamond {
+    background: linear-gradient(135deg, #AA90E8 0%, #BA89D5 37%, #C77DC3 92%);
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding:1px 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 25px;
+    transition: transform 0.2s ease;
+}
+
+.nav-btn:hover {
+    transform: scale(1.1);
+}
+
+.nav-icon {
+    font-size: 28px;
+    filter: grayscale(100%);
+}
+
+.nav-btn.active .nav-icon {
+    filter: grayscale(0%);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 16px;
+    }
+    
+    .header h2 {
+        font-size: 28px;
+    }
+    
+    .price {
+        font-size: 28px;
+    }
+    
+    .icon {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* --- DARK MODE STYLES --- */
+
+/* 1. Body: Deep Tone (Bukan Hitam Pekat) */
+/* Kita mengambil warna asli tapi versi "malam hari" (Deep Indigo ke Deep Purple) */
+body.dark-mode {
+    background: linear-gradient(135deg, #1f2a44 0%, #2e1a47 100%);
+}
+
+/* 2. Container */
+body.dark-mode .container {
+    background: transparent; /* Pastikan transparan agar gradient body terlihat */
+}
+
+/* 3. Header Box (Membership Title) */
+/* Kita gelapkan warna emasnya menjadi Bronze/Tembaga Tua agar tidak menyilaukan */
+body.dark-mode .header {
+    background: linear-gradient(135deg, #8B6E4E 0%, #685034 100%);
+    border-color: #8B6E4E; /* Border mengikuti warna dasar gelap */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Shadow lebih tebal */
+}
+
+body.dark-mode .header h1,
+body.dark-mode .header h2 {
+    color: #f0f0f0; /* Putih sedikit redup agar nyaman di mata */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* 4. Kartu Membership (Silver, Gold, Diamond) */
+/* Kartu tetap berwarna warni, tapi kita beri shadow kuat agar 'pop-up' di background gelap */
+body.dark-mode .card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Shadow gelap */
+}
+
+/* Opsional: Jika ingin kartu terlihat lebih 'deep' di mode gelap,
+   kita bisa sedikit menggelapkan gradient-nya. 
+   Jika tidak suka, hapus bagian .card.silver/gold/diamond di bawah ini */
+
+body.dark-mode .card.silver {
+    background: linear-gradient(135deg, #2c967a 0%, #3a8c80 37%, #36969c 92%);
+}
+
+body.dark-mode .card.gold {
+    background: linear-gradient(135deg, #c7952f 0%, #cf8034 37%, #c4622f 92%);
+}
+
+body.dark-mode .card.diamond {
+    background: linear-gradient(135deg, #8870c9 0%, #996db3 37%, #a863a3 92%);
+}
+
+/* 5. Teks & Badge di dalam Kartu */
+/* Badge "Silver/Gold" biasanya teks hitam transparan, di dark mode bisa kita biarkan
+   atau ubah jadi sedikit lebih solid */
+body.dark-mode .badge {
+    color: rgba(0, 0, 0, 0.85); 
+}
+
+/* 6. Bottom Navigation */
+body.dark-mode .bottom-nav {
+    background-color: #1a1a1a; /* Abu-abu sangat gelap (bukan hitam pekat) */
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Invert ikon navigasi menjadi putih */
+body.dark-mode .nav-btn img {
+    filter: invert(1) brightness(0.9);
+}
+
+/* Opsional: Highlight background tombol aktif */
+body.dark-mode .nav-btn.active {
+    background-color: rgba(255, 255, 255, 0.05); /* Highlight tipis */
+    border-radius: 15px;
+}   

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buat Akun</title>
+    <link rel="stylesheet" href="login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <a href="login.html"> <button class="back-btn">⟵</button></a>
+      <h2>Buat Akun</h2>
+      <div class="login-card">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+          alt="User Icon"
+          class="user-icon"
+        />
+
+        <form id="regform">
+          <input
+            type="text"
+            placeholder="USERNAME"
+            class="input-field"
+            id="username"
+            required
+          />
+
+          <div class="password-field">
+            <input
+              type="password"
+              placeholder="PASSWORD"
+              class="input-field"
+              id="password"
+              required
+            />
+          </div>
+
+          <div class="password-field">
+            <input
+              type="password"
+              placeholder="KONFIRMASI PASSWORD"
+              class="input-field"
+              id="confirm_password"
+              required
+            />
+          </div>
+
+          <input type="hidden" id="role" value="user" />
+
+          <button type="submit" class="login-btn">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="#"
+        ><img
+          src="https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
+          alt="Notif"
+      /></a>
+      <a href="index.html"
+        ><img
+          src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+          alt="Home"
+      /></a>
+
+      <a href="#"
+        ><img
+          src="https://cdn-icons-png.flaticon.com/512/3524/3524636.png"
+          alt="Setting"
+      /></a>
+    </div>
+
+    <script>
+      const form = document.getElementById("regform");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // 1. Cegah browser reload halaman
+
+        // 2. Ambil data dari input
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirm_password").value;
+
+        // 3. Validasi Frontend: Cek Konfirmasi Password
+        if (password !== confirmPassword) {
+          alert("Gagal: Password dan Konfirmasi Password tidak cocok!");
+          return; // Hentikan eksekusi
+        }
+
+        const data = {
+          // Data yang dibutuhkan backend (sesuai urutan di controller)
+          username: document.getElementById("username").value,
+          password: password, // Kirim password (bukan konfirmasi password)
+          confirm_password: confirmPassword, // Diperlukan backend untuk validasi akhir
+        };
+
+        try {
+          // 4. Kirim ke Backend pakai FETCH
+          const response = await fetch("/users/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            // 5. JIKA SUKSES: Pindah ke halaman login
+            alert("Registrasi Berhasil! Mengalihkan ke login...");
+            window.location.href = "login.html"; // Ganti dengan nama file loginmu
+          } else {
+            // 6. JIKA GAGAL: Tampilkan pesan error dari backend
+            alert("Gagal Registrasi: " + result.message);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Terjadi kesalahan koneksi");
+        }
+      });
+    </script>
+  </body>
+</html>

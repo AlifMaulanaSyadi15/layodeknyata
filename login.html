@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Dulu Yuk!</title>
+    <link rel="stylesheet" href="login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <a href="index.html">
+        <button class="back-btn">⟵</button>
+      </a>
+      <h2>Login dulu yuk!</h2>
+
+      <div class="login-card">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+          alt="User Icon"
+          class="user-icon"
+        />
+
+        <form id="loginform">
+          <input
+            type="text"
+            placeholder="USERNAME"
+            class="input-field"
+            id="username"
+            required
+          />
+          <div class="password-field">
+            <input
+              type="password"
+              placeholder="PASSWORD"
+              class="input-field"
+              id="password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p class="signup-text">
+          Pengguna baru? <a href="sign-up.html">Sign Up</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <a href="#"
+        ><img
+          src="https://cdn-icons-png.flaticon.com/512/1827/1827392.png"
+          alt="Notif"
+      /></a>
+      <a href="index.html"
+        ><img
+          src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+          alt="Home"
+      /></a>
+      <a href="#"
+        ><img
+          src="https://cdn-icons-png.flaticon.com/512/3524/3524636.png"
+          alt="Setting"
+      /></a>
+    </div>
+
+    <script>
+      const form = document.getElementById("loginform");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // 1. Cegah reload halaman
+
+        // 2. Ambil data dari input menggunakan ID yang baru
+        const data = {
+          username: document.getElementById("username").value,
+          password: document.getElementById("password").value,
+        };
+
+        try {
+          // 3. Kirim ke Backend pakai FETCH
+          const response = await fetch("/users/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          const result = await response.json();
+
+          console.log(result);
+          if (response.ok) {
+            localStorage.setItem("username", result.data.username);
+            // 4. JIKA SUKSES: Simpan data user dan pindah ke dashboard
+            alert("Login Berhasil! Selamat datang ");
+            window.location.href = "index.html"; // Ganti dengan halaman dashboard Anda
+          } else {
+            // 5. JIKA GAGAL: Tampilkan pesan error dari backend
+            alert("Gagal Login: " + result.message);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Terjadi kesalahan koneksi ke server.");
+        }
+      });
+    </script>
+  </body>
+</html>
