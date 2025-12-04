@@ -9,7 +9,8 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(express.json()); // Untuk parse application/json
-app.use(express.static(process.cwd())); // Tambahkan bagian ini agar CSS dan Gambar terbaca
+// Ganti kode yang lama dengan ini:
+app.use(express.static(path.join(__dirname, "public"))); // Tambahkan bagian ini agar CSS dan Gambar terbaca
 
 // Middleware CORS (Penting untuk komunikasi frontend/backend)
 app.use((req, res, next) => {
@@ -142,9 +143,9 @@ app.post("/users/login", async (req, res) => {
   }
 });
 
-// Tambahkan Route untuk Halaman Depan
+// Update path-nya karena index.html sudah pindah ke dalam folder public
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Handle 404 (Opsional tapi bagus)
