@@ -4,12 +4,12 @@ const bcrypt = require("bcryptjs"); // Pastikan sudah diinstall: npm install bcr
 const db = require("./db"); // Import koneksi database (Pool dari mysql2/promise)
 const path = require("path");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
 app.use(express.json()); // Untuk parse application/json
-app.use(express.static(path.join(__dirname, "/"))); // Tambahkan bagian ini agar CSS dan Gambar terbaca
+app.use(express.static(process.cwd())); // Tambahkan bagian ini agar CSS dan Gambar terbaca
 
 // Middleware CORS (Penting untuk komunikasi frontend/backend)
 app.use((req, res, next) => {
@@ -145,6 +145,11 @@ app.post("/users/login", async (req, res) => {
 // Tambahkan Route untuk Halaman Depan
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// Handle 404 (Opsional tapi bagus)
+app.use((req, res) => {
+  res.status(404).send("Halaman tidak ditemukan");
 });
 
 // Jalankan Server
