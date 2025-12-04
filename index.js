@@ -50,7 +50,8 @@ app.post("/users/register", async (req, res) => {
     // 2. Cek apakah Username sudah terdaftar
     console.log("cek username");
     const [existingUsers] = await db.query(
-      "SELECT *FROM users id WHERE username = ?",
+      // Perbaikan: Tambah spasi dan hapus 'id'
+      "SELECT * FROM users WHERE username = ?",
       [username]
     );
 
